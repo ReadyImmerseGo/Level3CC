@@ -12,155 +12,119 @@ Coloris({
 Coloris.setInstance('.profile-skin', {
     swatchesOnly: true,
     swatches: [
-        '#e9caa7',
-        '#efcfb8',
-        '#f6dec3',
-        '#f6e2ab',
-        '#eec695',
-        '#f2be85',
-        '#e6bc8f',
-        '#ecbf82',
-        '#cf9d7b',
-        '#cb9662',
-        '#ab8a63',
-        '#94613d',
-        '#885533',
-        '#754420',
-        '#b16849',
-        '#804b2a',
-        '#603b1a',
-        '#2f1e14'
-    ]
-});
-
-Coloris.setInstance('.profile-facialHair', {
-    swatchesOnly: true,
-    swatches: [
-        '#212121',
-        '#161213',
-        '#666666',
-        '#999999',
-        '#AAAAAA',
-        '#EEEEEE',
-        '#dbd2ad',
-        '#d3c4a1',
-        '#b6a77e',
-        '#b8a57a',
-        '#857651',
-        '#786c51',
-        '#575041',
-        '#3c352d',
-        '#2f1e14'
+        '#FFE4C4', // bisque
+        '#F5DEB3', // wheat
+        '#DEB887', // burlywood
+        '#D2B48C', // tan
+        '#CD853F', // peru
+        '#8B4513', // saddlebrown
+        '#A0522D', // sienna
+        '#6B4423', // dark brown
+        '#5C4033', // dark brown
+        '#A67B5B', // medium brown
+        '#E6BE8A', // light brown
+        '#F5D0A9'  // light tan
     ]
 });
 
 Coloris.setInstance('.profile-hair', {
     swatches: [
-        // beard & hair
-        '#212121',
-        '#161213',
-        '#666666',
-        '#999999',
-        '#AAAAAA',
-        '#EEEEEE',
-        '#dbd2ad',
-        '#d3c4a1',
-        '#b6a77e',
-        '#b8a57a',
-        '#857651',
-        '#786c51',
-        '#575041',
-        '#3c352d',
-        '#2f1e14',
-        // hair only
-        '#ece174', // pale yellow
-        '#deb937', // yellow orange
-        '#e56520', // orange
-        '#b95435', // orange red
-        '#aa2c21', // red orange
-        '#8b1a20', // red
-        '#5d111d', // dark red
-        '#c9c0d7', // pale violet
-        '#9d9ac3', // violet blue
-        '#7f97c5', // blue
-        '#688b9d', // blue green
-        '#5c837d', // green blue
-        '#2b7549', // green
-        '#1b4136' // dark green
+        // Natural Black to Brown Shades
+        '#000000', // jet black
+        '#1A1A1A', // soft black
+        '#2C1810', // dark brown
+        '#3C2314', // medium dark brown
+        '#4A2C2A', // chestnut brown
+        '#5C4033', // medium brown
+        '#6B4423', // light brown
+        '#8B4513', // golden brown
+        '#A67B5B', // light chestnut
+        '#C19A6B', // honey brown
+        
+        // Blonde Shades
+        '#F5D0A9', // light blonde
+        '#E6BE8A', // golden blonde
+        '#D2B48C', // sandy blonde
+        '#C19A6B', // dark blonde
+        '#B8860B', // dark golden blonde
+        
+        // Red Shades
+        '#8B0000', // dark red
+        '#A52A2A', // auburn
+        '#CD5C5C', // indian red
+        '#DC143C', // crimson
+        '#FF4500', // orange red
+        
+        // Gray/White Shades
+        '#808080', // gray
+        '#A9A9A9', // dark gray
+        '#D3D3D3', // light gray
+        '#FFFFFF', // white
+        '#F5F5F5'  // off-white
     ]
 });
 
-Coloris.setInstance('.profile-accessory1', {
+Coloris.setInstance('.profile-lips', {
     swatches: [
-        '#250c0a',
-        '#dadfe6',
-        '#80ceeb',
-        '#3f74b9',
-        '#2b7549',
-        '#f9b020',
-        '#e74011',
+        // Soft Pink Shades
+        '#FFB6C1', // light pink
+        '#FFC0CB', // pink
+        '#FFB5C5', // soft pink
+        '#FFAEB9', // pale pink
+        '#FFC1C9', // baby pink
+        
+        // Natural Rose Shades
+        '#E8ADAA', // light rose
+        '#E8A1A1', // soft rose
+        '#D98880', // dusty rose
+        '#C08081', // mauve
+        '#B76E79', // rose pink
+        
+        // Soft Red Shades
+        '#CD5C5C', // indian red
+        '#DB7093', // pale violet red
+        '#BC8F8F', // rosy brown
+        '#D2B48C', // tan
+        '#DEB887'  // burlywood
     ]
 });
 
-Coloris.setInstance('.profile-accessory2', {
+Coloris.setInstance('.profile-accessory', {
     swatches: [
-        '#250c0a',
-        '#dadfe6',
-        '#80ceeb',
-        '#3f74b9',
-        '#2b7549',
-        '#f9b020',
-        '#e74011',
-    ]
-});
-
-Coloris.setInstance('.profile-collar', {
-    swatches: [
-        '#000000',
-        '#212121',
-        '#666666',
-        '#999999',
-        '#AAAAAA',
-        '#EEEEEE',
-        '#c9c0d7', // pale violet
-        '#9d9ac3', // violet blue
-        '#7f97c5', // blue
-        '#688b9d', // blue green
-        '#5c837d', // green blue
-        '#80ceeb',
-        '#3f74b9',
-        '#2b7549',
-        '#f9b020',
-        '#e74011',
-    ]
-});
-
-Coloris.setInstance('.profile-logo', {
-    swatches: [
-        '#000000',
-        '#212121',
-        '#666666',
-        '#999999',
-        '#AAAAAA',
-        '#EEEEEE',
-        '#c9c0d7',
-        '#9d9ac3',
-        '#7f97c5',
-        '#688b9d',
-        '#5c837d',
-        '#b8e1ef',
-        '#70c7ed',
-        '#00a8e1',
-        '#0087c9',
-        '#73c5c4',
-        '#00a19d',
-        '#00a06d',
-        '#3aa948',
-        '#547e44',
-        '#f9b020',
-        '#e74011',
-
-
+        // Classic Colors
+        '#000000', // black
+        '#FFFFFF', // white
+        '#808080', // gray
+        '#C0C0C0', // silver
+        '#FFD700', // gold
+        
+        // Warm Colors
+        '#FF4500', // orange red
+        '#FF8C00', // dark orange
+        '#FFA500', // orange
+        '#FFD700', // gold
+        '#FFE4B5', // moccasin
+        
+        // Cool Colors
+        '#4169E1', // royal blue
+        '#1E90FF', // dodger blue
+        '#00BFFF', // deep sky blue
+        '#87CEEB', // sky blue
+        '#B0E0E6', // powder blue
+        
+        // Jewel Tones
+        '#4B0082', // indigo
+        '#800080', // purple
+        '#9932CC', // dark orchid
+        '#BA55D3', // medium orchid
+        '#DA70D6', // orchid
+        
+        // Earth Tones
+        '#8B4513', // saddle brown
+        '#A0522D', // sienna
+        '#6B8E23', // olive drab
+        '#556B2F', // dark olive green
+        '#2E8B57'  // sea green
     ]
 });
 
@@ -216,12 +180,12 @@ Coloris.setInstance('.profile-chest', {
 });
 
 document.getElementById("closeButtonAvatar").onclick = (event) => {
-    document.dispatchEvent(new CustomEvent("notify", { detail: {type:"close"} }));
+    document.dispatchEvent(new CustomEvent("notify", { detail: {type:"close", command: "avatar_close"} }));
 };
 
 let changeColor = (target, color) => {
     document.dispatchEvent(
-        new CustomEvent("notify", { detail: {type:"notify", command:"html_notify", target:target, data:color} })
+        new CustomEvent("notify", { detail: {type:"notify", command:"avatar_notify", target:target, data:color} })
     );
 };
 
@@ -258,7 +222,7 @@ document.getElementById("eyesInput").addEventListener('input',
     }
 )
 
-document.getElementById("lipsInput").addEventListener('change', 
+document.getElementById("lipsInput").addEventListener('change',
      (event) => {
      changeColor('lips', event.target.value);
     }
@@ -269,7 +233,7 @@ document.getElementById("lipsInput").addEventListener('input',
     }
 )
 
-document.getElementById("facialHairInput").addEventListener('change', 
+document.getElementById("facialHairInput").addEventListener('change',
      (event) => {
      changeColor('facialHair', event.target.value);
     }
@@ -280,7 +244,7 @@ document.getElementById("facialHairInput").addEventListener('input',
     }
 )
 
-document.getElementById("accessory1Input").addEventListener('change', 
+document.getElementById("accessory1Input").addEventListener('change',
      (event) => {
      changeColor('accessory1', event.target.value);
     }
@@ -291,7 +255,7 @@ document.getElementById("accessory1Input").addEventListener('input',
     }
 )
 
-document.getElementById("accessory2Input").addEventListener('change', 
+document.getElementById("accessory2Input").addEventListener('change',
      (event) => {
      changeColor('accessory2', event.target.value);
     }
@@ -302,7 +266,7 @@ document.getElementById("accessory2Input").addEventListener('input',
     }
 )
 
-document.getElementById("collarInput").addEventListener('change', 
+document.getElementById("collarInput").addEventListener('change',
      (event) => {
      changeColor('collar', event.target.value);
     }
@@ -313,7 +277,7 @@ document.getElementById("collarInput").addEventListener('input',
     }
 )
 
-document.getElementById("chestInput").addEventListener('change', 
+document.getElementById("chestInput").addEventListener('change',
      (event) => {
      changeColor('chest', event.target.value);
     }
@@ -324,7 +288,7 @@ document.getElementById("chestInput").addEventListener('input',
     }
 )
 
-document.getElementById("logoInput").addEventListener('change', 
+document.getElementById("logoInput").addEventListener('change',
      (event) => {
      changeColor('logo', event.target.value);
     }

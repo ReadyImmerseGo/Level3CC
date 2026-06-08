@@ -126,12 +126,8 @@ body {
   border: 1px solid #FF9947;
 }
 
-#https_warning_text_en,
-#https_warning_text_fr,
-#https_warning_extra_en,
-#https_warning_extra_fr {
+.https_warning {
   font-size: 13px;
-  display: none;
   color: #FF9947;
 }
 
@@ -997,6 +993,47 @@ canvas {
   height: calc(2 * 80 + 20) px;
 }
 
+#load_background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #000000;
+  z-index: 1000;
+  display: none;
+  top: 0px;
+}
+
+#load_bar {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50vw;
+  height: 10px;
+  overflow: hidden;
+  border-radius: 10px;
+  background: #fff;
+  z-index: 2000;
+}
+
+#load_bar_background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, #116ddb, #e83f98);
+}
+
+#load_bar_mask {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+}
+
 #load_explain {
   font-weight: normal;
   font-size: 1em;
@@ -1007,6 +1044,11 @@ canvas {
   bottom: 20px;
   left: 15px;
   display: none;
+  font-family: "JetBrains Mono", "Consolas", "Courier New", monospace;
+}
+
+#load_label {
+  font-weight: bold;
 }
 
 .circularProgress {
@@ -1091,24 +1133,29 @@ canvas {
   margin-top: -calc(80 - 20 / 2)px;
 }
 
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("../../static/assets/fonts/JetBrainsMono-Regular.woff2") format("woff2");
+}
 /*
 @font-face {
     font-family: 'PP Pangram Sans Rounded Bold';
-    src: url("../../data/fonts/PPPangramSansRounded-Bold.otf");
+    src: url("../../static/assets/fonts/PPPangramSansRounded-Bold.otf");
 }
 
 @font-face {
     font-family: 'PP Pangram Sans Rounded Medium';
-    src: url("../../data/fonts/PPPangramSansRounded-Medium.otf");
+    src: url("../../static/assets/fonts/PPPangramSansRounded-Medium.otf");
 }
 
 @font-face {
     font-family: 'PP Pangram Sans Rounded Compact Regular';
-    src: url("../../data/fonts/PPPangramSansRounded-CompactRegular.otf");
+    src: url("../../static/assets/fonts/PPPangramSansRounded-CompactRegular.otf");
 }*/
 /* width */
 ::-webkit-scrollbar {
   width: 10px;
+  height: 10px;
 }
 
 /* Handle */
@@ -1147,7 +1194,6 @@ canvas {
   -webkit-animation: showanimation 0.5s ease-out;
   -moz-animation: showanimation 0.5s ease-out;
   animation: showanimation 0.5s ease-out;
-  opacity: 1;
 }
 @keyframes showanimation {
   from {
@@ -1181,6 +1227,12 @@ canvas {
     opacity: 1;
   }
 }
+#first.show,
+#second.show,
+#firstOverlay.show,
+#secondOverlay.show {
+  opacity: 1;
+}
 
 #first.firsthide,
 #second.firsthide,
@@ -1196,7 +1248,6 @@ canvas {
   -webkit-animation: hideanimation 0.5s ease-in;
   -moz-animation: hideanimation 0.5s ease-in;
   animation: hideanimation 0.5s ease-in;
-  opacity: 0;
 }
 @keyframes hideanimation {
   from {
@@ -1230,6 +1281,12 @@ canvas {
     opacity: 0;
   }
 }
+#first.hide,
+#second.hide,
+#firstOverlay.hide,
+#secondOverlay.hide {
+  opacity: 0;
+}
 
 .closeChatButton {
   border: 0;
@@ -1254,6 +1311,7 @@ canvas {
 }
 
 .expandChatButton {
+  cursor: pointer;
   border-radius: 100%;
   background-color: white;
   display: none;
@@ -1298,10 +1356,40 @@ canvas {
   max-height: 50vh;
   overflow-y: scroll;
   padding-inline: 10px;
-  margin-block: 20px;
+  padding-bottom: 10px;
+  margin-top: 20px;
+  gap: 0.2rem;
   display: flex;
   flex-direction: column-reverse;
   font-family: "PP Pangram Sans Rounded Medium";
+}
+
+.chat-message-time {
+  color: #737373;
+  margin-bottom: 7px;
+}
+
+.chat-message-username {
+  font-family: "PP Pangram Sans Rounded Bold";
+  color: #81dae5;
+  font-size: 15px;
+}
+
+.chat-user-message > .chat-message-content {
+  color: #000;
+  font-size: 15px;
+  margin-left: 0.2rem;
+}
+
+.chat-system-message > .chat-message-content {
+  color: #737373;
+  font-size: 15px;
+  font-family: "PP Pangram Sans Rounded Bold";
+}
+
+.chat-instance-log > .chat-message-content {
+  color: #737373;
+  font-size: 15px;
 }
 
 .chat {
@@ -1322,6 +1410,48 @@ canvas {
   left: 17px;
   width: 20%;
   min-width: 180px;
+}
+
+.userMentionList {
+  display: none;
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  width: 100%;
+  height: fit-content;
+  background-color: white;
+  border-radius: 10px;
+  padding: 8px;
+  z-index: 1000;
+  gap: 5px;
+  flex-direction: column;
+}
+
+.userMentionListItem {
+  padding: 5px;
+  border-radius: 5px;
+  background-color: #cae7ee;
+  color: #1ba8b9;
+  cursor: pointer;
+  font-family: "PP Pangram Sans Rounded Bold";
+  transition: 0.2s;
+}
+
+.userMentionListItem.selected {
+  background-color: #1ba8b9;
+  color: white;
+}
+
+.userMentionListItem:hover {
+  cursor: pointer;
+  background-color: rgba(27, 169, 185, 0.5803921569);
+  color: white;
+}
+
+.userMention {
+  background-color: #cae7ee;
+  color: #1ba8b9;
+  border-radius: 5px;
 }
 
 @media screen and (max-width: 768px), screen and (max-device-width: 768px) {
@@ -1359,30 +1489,32 @@ canvas {
   color: #1ba8b9;
   padding-inline: 15px;
   border: 0;
+  outline: none;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  font-family: "PP Pangram Sans Rounded Bold";
+  line-height: 46px;
 }
 
-.chatInput::placeholder {
+.chatInput:empty:before {
+  color: rgba(27, 169, 185, 0.6705882353);
+  font-family: "PP Pangram Sans Rounded Medium";
+  opacity: 0.5;
+}
+
+.chat-mentionned-message {
+  line-height: 1.5rem;
+  background-color: #e6f8fa;
+}
+
+.mention {
+  background-color: #cae7ee;
   color: #1ba8b9;
-  opacity: 1;
-}
-
-.chatInput:-ms-input-placeholder {
-  /* Internet Explorer 10-11 */
-  color: #1ba8b9;
-}
-
-.chatInput::-ms-input-placeholder {
-  /* Microsoft Edge */
-  color: #1ba8b9;
-}
-
-.chatInput:focus {
-  outline-color: #4cc6d4;
-}
-
-.chatMessage {
-  display: flex;
-  flex-direction: row;
+  border-radius: 5px;
+  padding: 4px;
+  margin: 0 2px;
+  font-weight: bold;
 }
 
 .menuPopin {
@@ -1403,7 +1535,8 @@ canvas {
   position: absolute;
   left: 50%;
   top: 50%;
-  width: 274px;
+  min-width: 274px;
+  width: fit-content;
   transform: translate(-50%, -50%);
   flex-direction: column;
   display: flex;
@@ -1638,7 +1771,7 @@ canvas {
 }
 
 #openUsersPanelImage {
-  width: 70%;
+  width: 55%;
 }
 
 #raiseHandImage {
@@ -1746,7 +1879,7 @@ select:focus-visible {
 }
 
 textarea {
-  font-family: "PP Pangram Sans Rounded Medium";
+  font-family: "PP Pangram Sans Rounded Bold";
   border: none;
   color: #1ba8b9;
   padding: 1rem;
@@ -1762,15 +1895,29 @@ textarea:focus-visible {
 }
 
 textarea::placeholder {
-  font-family: "PP Pangram Sans Rounded Compact Regular";
+  font-family: "PP Pangram Sans Rounded Bold";
   opacity: 0.5;
-  color: #1ba8b9;
+  color: rgba(27, 169, 185, 0.6705882353);
 }
 
 .reportContent {
   text-align: left;
   font-size: 16px;
   margin-block: 1rem;
+}
+
+.renameContent {
+  display: flex;
+  gap: 10px;
+  margin-block: 1rem;
+}
+
+.renamePopupText {
+  font-family: "PP Pangram Sans Rounded Bold";
+  font-size: 14px;
+  color: #000;
+  margin-top: 1rem;
+  text-align: left;
 }
 
 #usersPopup {
@@ -1880,7 +2027,7 @@ textarea::placeholder {
   padding: 10px;
   border-radius: 10px;
   width: 150px;
-  height: 30px;
+  height: 50px;
   align-content: center;
   cursor: pointer;
 }
@@ -1897,7 +2044,7 @@ textarea::placeholder {
   padding: 10px;
   border-radius: 10px;
   width: 150px;
-  height: 30px;
+  height: 50px;
   align-content: center;
   cursor: pointer;
 }
